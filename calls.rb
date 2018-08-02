@@ -1,4 +1,4 @@
-
+##### INITIALIZE AND AUTHENTICATE #####
 
 client = Restforce.new(username: 'user',
                        password: 'pass',
@@ -7,6 +7,7 @@ client = Restforce.new(username: 'user',
                        client_secret: 'secret',
                        api_version: '43.0')
 
+##### GET REQUESTS #####
 
 #query will get you a collection of objects that meet your parameters
 contacts = client.query("SELECT ALL FROM Contact WHERE Id = 'id'")
@@ -26,11 +27,13 @@ contacts_json["1"]["name"]
 client.find('Contact', '001D000000INjVe')
 # => #<Restforce::SObject Id="001D000000INjVe" Name="Jace Beleren" LastModifiedBy="005G0000002f8FHIAY" ... >
 
+##### POST REQUESTS #####
 
 #create allows you to create a new object
 client.create('Contact', Name: 'John Doe')
 # => '0016000000MRatd'
 
+##### PATCH REQUESTS ######
 
 #update will change an object
 client.update('Contact', Id: '0016000000MRatd', Name: 'Name Name')
@@ -41,6 +44,7 @@ contacts.last.Name = "First Last"
 contacts.last.save
 # => true
 
+##### DELETE REQUESTS #####
 
 #destroy will delete the chosen object
 client.destroy('Contact', '0016000000MRatd')
